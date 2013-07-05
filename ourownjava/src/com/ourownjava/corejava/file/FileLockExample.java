@@ -15,7 +15,7 @@ import java.nio.channels.*;
 public class FileLockExample {
 
 	private FileLock lock(RandomAccessFile file) throws IOException{
-		FileLock fileLock = file.getChannel().tryLock();
+		final FileLock fileLock = file.getChannel().tryLock();
 		//if the JVM is not able to acquire a lock then a null
 		//is returned, it could be because the lock is already acquired
 		//by another thread or process.
@@ -23,9 +23,9 @@ public class FileLockExample {
 	}
 
 	public static void main(String args[]) throws IOException, InterruptedException{
-		RandomAccessFile file = new RandomAccessFile(new File("/mnt/java/sample.file"), "rw");
-		FileLockExample fthis = new FileLockExample();
-		FileLock lock = fthis.lock(file);
+		final RandomAccessFile file = new RandomAccessFile(new File("/mnt/java/sample.file"), "rw");
+		final FileLockExample fthis = new FileLockExample();
+		final FileLock lock = fthis.lock(file);
 		System.out.println("Got the lock? "+(null != lock));
 		if(null == lock){
 			return;

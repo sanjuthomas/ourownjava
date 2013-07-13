@@ -19,7 +19,7 @@ public class MongoClient {
 
 	private static final int PORT = 27017;
 
-	/**
+	/** 
 	 * @return Mongo
 	 * @throws UnknownHostException
 	 */
